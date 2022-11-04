@@ -3,7 +3,6 @@
 <h1>📖 EventBridge SchemaWatcher</h1>
 <p>EventBridge CDK construct that will notify your downstream consumers of schema changes (with plugin support).</>
 
-[![MIT License][license-badge]][license]
 [![PRs Welcome][prs-badge]][prs]
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-17-orange.svg?style=flat-square)](#contributors-)
