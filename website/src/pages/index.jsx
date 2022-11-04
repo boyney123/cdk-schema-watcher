@@ -18,14 +18,14 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="https://twitter.com/boyney123" />
         <meta name="twitter:creator" content="https://twitter.com/boyney123" />
-        <meta property="og:url" content="https://schema-watcher.vercel.app/" />
+        <meta property="og:url" content="https://cdk-schema-watcher.vercel.app/" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="SchemaWatcher: Notify consumers of changes to your EventBridge schemas." />
         <meta
           property="og:description"
           content="An open source CDK construct that listens for EventBridge schema changes and notifies consumers."
         />
-        <meta property="og:image" content="https://schema-watcher.vercel.app/img/opengraph.png" />
+        <meta property="og:image" content="https://cdk-schema-watcher.vercel.app/img/opengraph.png" />
         <meta property="og:image:alt" content="SchemaWatcher: Notify consumers of changes to your EventBridge schemas." />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="600" />
