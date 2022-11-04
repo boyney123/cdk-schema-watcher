@@ -1,17 +1,74 @@
-// import * as cdk from 'aws-cdk-lib';
-// import { Template } from 'aws-cdk-lib/assertions';
-// import * as CdkSchemaWatcher from '../lib/cdk-schema-watcher-stack';
+import { SynthUtils, expect as expectCDK, haveResourceLike } from '@aws-cdk/assert';
+import { Stack } from 'aws-cdk-lib';
+import { SchemaWatcher } from '../lib';
+import { SlackNotifier } from '../plugins/slack/plugin';
 
-// example test. To run these tests, uncomment this file along with the
-// example resource in lib/cdk-schema-watcher-stack.ts
-test('SQS Queue Created', () => {
-//   const app = new cdk.App();
-//     // WHEN
-//   const stack = new CdkSchemaWatcher.CdkSchemaWatcherStack(app, 'MyTestStack');
-//     // THEN
-//   const template = Template.fromStack(stack);
+describe('SchemaWatcher', () => {
+  it('snapshot test SchemaWatcher default params', () => {
+    const stack = new Stack();
+    new SchemaWatcher(stack, 'MyTestTeam', {
+      schemas: ['myapp.users@Test'],
+      type: 'All',
+      plugins: [
+        new SlackNotifier({
+          API_KEY: 'test',
+          CHANNEL_ID: 'test',
+        }),
+      ],
+    });
+    expect(SynthUtils.toCloudFormation(stack)).toMatchSnapshot();
+  });
 
-//   template.hasResourceProperties('AWS::SQS::Queue', {
-//     VisibilityTimeout: 300
-//   });
+  it('cdk-schema-watcher creates a default log group for all configured events', () => {
+    const stack = new Stack();
+
+    new SchemaWatcher(stack, 'MyTestTeam', {
+      schemas: ['myapp.users@Test'],
+      type: 'All',
+      plugins: [
+        new SlackNotifier({
+          API_KEY: 'test',
+          CHANNEL_ID: 'test',
+        }),
+      ],
+    });
+
+    expectCDK(stack).to(
+      haveResourceLike('AWS::Logs::LogGroup', {
+        LogGroupName: '/aws/events/schema-listeners/MyTestTeam/schema-notification-logs',
+        RetentionInDays: 731,
+      })
+    );
+  });
+
+  it('cdk-schema-watcher creates a rule onto the default EventBridge event bus to listen for user configured schemas', () => {
+    const stack = new Stack();
+
+    new SchemaWatcher(stack, 'MyTestTeam', {
+      schemas: ['myapp.users@Test'],
+      type: 'All',
+      plugins: [
+        new SlackNotifier({
+          API_KEY: 'test',
+          CHANNEL_ID: 'test',
+        }),
+      ],
+    });
+
+    expectCDK(stack).to(
+      haveResourceLike('AWS::Events::Rule', {
+        EventBusName: 'default',
+        EventPattern: {
+          detail: {
+            SchemaName: ['myapp.users@Test'],
+          },
+          'detail-type': ['Schema Created', 'Schema Version Created'],
+          source: ['aws.schemas'],
+        },
+        Name: 'MyTestTeam-listen-to-schema-changes',
+        State: 'ENABLED',
+      })
+    );
+  });
+  
 });

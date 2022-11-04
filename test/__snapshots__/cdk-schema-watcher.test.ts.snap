@@ -1,0 +1,337 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SchemaWatcher snapshot test SchemaWatcher default params 1`] = `
+Object {
+  "Outputs": Object {
+    "MyTestTeamLogGroup5C7602E6": Object {
+      "Value": Object {
+        "Ref": "MyTestTeamSchemaWatcherLogGroup345F640D",
+      },
+    },
+    "MyTestTeamPluginslackNotificationARN7A406A0A": Object {
+      "Value": Object {
+        "Fn::GetAtt": Array [
+          "MyTestTeamPluginslackNotificationD0D29E5F",
+          "Arn",
+        ],
+      },
+    },
+  },
+  "Resources": Object {
+    "AWS679f53fac002430cb0da5b7982bd22872D164C4C": Object {
+      "DependsOn": Array [
+        "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "e845402ce43b66fc6f20df4a239f20f8662eb6c7f920b94cf6542dd0e64ce0f7.zip",
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs14.x",
+        "Timeout": 120,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "EventsLogGroupPolicyMyTestTeamRule0272B20046BD0CD0": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "EventsLogGroupPolicyMyTestTeamRule0272B200CustomResourcePolicyFE182C61",
+      ],
+      "Properties": Object {
+        "Create": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"CloudWatchLogs\\",\\"action\\":\\"putResourcePolicy\\",\\"parameters\\":{\\"policyName\\":\\"EventsLogGroupPolicyMyTestTeamRule0272B200\\",\\"policyDocument\\":\\"{\\\\\\"Statement\\\\\\":[{\\\\\\"Action\\\\\\":[\\\\\\"logs:PutLogEvents\\\\\\",\\\\\\"logs:CreateLogStream\\\\\\"],\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Principal\\\\\\":{\\\\\\"Service\\\\\\":\\\\\\"events.amazonaws.com\\\\\\"},\\\\\\"Resource\\\\\\":\\\\\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "MyTestTeamSchemaWatcherLogGroup345F640D",
+                  "Arn",
+                ],
+              },
+              "\\\\\\"}],\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\"}\\"},\\"physicalResourceId\\":{\\"id\\":\\"EventsLogGroupPolicyMyTestTeamRule0272B200\\"}}",
+            ],
+          ],
+        },
+        "Delete": "{\\"service\\":\\"CloudWatchLogs\\",\\"action\\":\\"deleteResourcePolicy\\",\\"parameters\\":{\\"policyName\\":\\"EventsLogGroupPolicyMyTestTeamRule0272B200\\"},\\"ignoreErrorCodesMatching\\":\\"400\\"}",
+        "InstallLatestAwsSdk": true,
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "AWS679f53fac002430cb0da5b7982bd22872D164C4C",
+            "Arn",
+          ],
+        },
+        "Update": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "{\\"service\\":\\"CloudWatchLogs\\",\\"action\\":\\"putResourcePolicy\\",\\"parameters\\":{\\"policyName\\":\\"EventsLogGroupPolicyMyTestTeamRule0272B200\\",\\"policyDocument\\":\\"{\\\\\\"Statement\\\\\\":[{\\\\\\"Action\\\\\\":[\\\\\\"logs:PutLogEvents\\\\\\",\\\\\\"logs:CreateLogStream\\\\\\"],\\\\\\"Effect\\\\\\":\\\\\\"Allow\\\\\\",\\\\\\"Principal\\\\\\":{\\\\\\"Service\\\\\\":\\\\\\"events.amazonaws.com\\\\\\"},\\\\\\"Resource\\\\\\":\\\\\\"",
+              Object {
+                "Fn::GetAtt": Array [
+                  "MyTestTeamSchemaWatcherLogGroup345F640D",
+                  "Arn",
+                ],
+              },
+              "\\\\\\"}],\\\\\\"Version\\\\\\":\\\\\\"2012-10-17\\\\\\"}\\"},\\"physicalResourceId\\":{\\"id\\":\\"EventsLogGroupPolicyMyTestTeamRule0272B200\\"}}",
+            ],
+          ],
+        },
+      },
+      "Type": "Custom::CloudwatchLogResourcePolicy",
+      "UpdateReplacePolicy": "Delete",
+    },
+    "EventsLogGroupPolicyMyTestTeamRule0272B200CustomResourcePolicyFE182C61": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "logs:PutResourcePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            Object {
+              "Action": "logs:DeleteResourcePolicy",
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "EventsLogGroupPolicyMyTestTeamRule0272B200CustomResourcePolicyFE182C61",
+        "Roles": Array [
+          Object {
+            "Ref": "AWS679f53fac002430cb0da5b7982bd2287ServiceRoleC1EA0FF2",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MyTestTeamPluginslackNotificationD0D29E5F": Object {
+      "DependsOn": Array [
+        "MyTestTeamPluginslackNotificationServiceRoleDefaultPolicy0BF0B9DA",
+        "MyTestTeamPluginslackNotificationServiceRoleADC4B501",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "944806ecbdf260545f83045489c35f66de16e48ffcef57ba6b39daf2da654e53.zip",
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1",
+            "CHANNEL_ID": "test",
+            "SLACK_API_KEY": "test",
+          },
+        },
+        "Handler": "index.handler",
+        "MemorySize": 1024,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "MyTestTeamPluginslackNotificationServiceRoleADC4B501",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs16.x",
+        "Timeout": 5,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "MyTestTeamPluginslackNotificationServiceRoleADC4B501": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "MyTestTeamPluginslackNotificationServiceRoleDefaultPolicy0BF0B9DA": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "schemas:DescribeSchema",
+              "Effect": "Allow",
+              "Resource": Object {
+                "Fn::Join": Array [
+                  "",
+                  Array [
+                    "arn:aws:schemas:",
+                    Object {
+                      "Ref": "AWS::Region",
+                    },
+                    ":",
+                    Object {
+                      "Ref": "AWS::AccountId",
+                    },
+                    ":schema/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "MyTestTeamPluginslackNotificationServiceRoleDefaultPolicy0BF0B9DA",
+        "Roles": Array [
+          Object {
+            "Ref": "MyTestTeamPluginslackNotificationServiceRoleADC4B501",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "MyTestTeamRule6983D7A1": Object {
+      "Properties": Object {
+        "EventBusName": "default",
+        "EventPattern": Object {
+          "detail": Object {
+            "SchemaName": Array [
+              "myapp.users@Test",
+            ],
+          },
+          "detail-type": Array [
+            "Schema Created",
+            "Schema Version Created",
+          ],
+          "source": Array [
+            "aws.schemas",
+          ],
+        },
+        "Name": "MyTestTeam-listen-to-schema-changes",
+        "State": "ENABLED",
+        "Targets": Array [
+          Object {
+            "Arn": Object {
+              "Fn::Join": Array [
+                "",
+                Array [
+                  "arn:",
+                  Object {
+                    "Ref": "AWS::Partition",
+                  },
+                  ":logs:",
+                  Object {
+                    "Ref": "AWS::Region",
+                  },
+                  ":",
+                  Object {
+                    "Ref": "AWS::AccountId",
+                  },
+                  ":log-group:",
+                  Object {
+                    "Ref": "MyTestTeamSchemaWatcherLogGroup345F640D",
+                  },
+                ],
+              ],
+            },
+            "Id": "Target0",
+          },
+          Object {
+            "Arn": Object {
+              "Fn::GetAtt": Array [
+                "MyTestTeamPluginslackNotificationD0D29E5F",
+                "Arn",
+              ],
+            },
+            "Id": "Target1",
+          },
+        ],
+      },
+      "Type": "AWS::Events::Rule",
+    },
+    "MyTestTeamRuleAllowEventRuleMyTestTeamPluginslackNotificationCB65424282522DCF": Object {
+      "Properties": Object {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": Object {
+          "Fn::GetAtt": Array [
+            "MyTestTeamPluginslackNotificationD0D29E5F",
+            "Arn",
+          ],
+        },
+        "Principal": "events.amazonaws.com",
+        "SourceArn": Object {
+          "Fn::GetAtt": Array [
+            "MyTestTeamRule6983D7A1",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "AWS::Lambda::Permission",
+    },
+    "MyTestTeamSchemaWatcherLogGroup345F640D": Object {
+      "DeletionPolicy": "Delete",
+      "Properties": Object {
+        "LogGroupName": "/aws/events/schema-listeners/MyTestTeam/schema-notification-logs",
+        "RetentionInDays": 731,
+      },
+      "Type": "AWS::Logs::LogGroup",
+      "UpdateReplacePolicy": "Delete",
+    },
+  },
+}
+`;

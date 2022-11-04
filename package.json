@@ -14,6 +14,8 @@
     "cdk": "cdk"
   },
   "devDependencies": {
+    "@aws-cdk/assert": "^2.49.0",
+    "@types/aws-lambda": "^8.10.108",
     "@types/jest": "^27.5.2",
     "@types/node": "10.17.27",
     "@types/prettier": "2.6.0",
@@ -21,22 +23,21 @@
     "jest": "^27.5.1",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.9.1",
-    "typescript": "~3.9.7",
-    "@types/aws-lambda": "^8.10.108"
+    "typescript": "~3.9.7"
   },
   "dependencies": {
     "@aws-sdk/client-schemas": "^3.202.0",
     "@slack/web-api": "^6.7.2",
-    "aws-cdk-lib": "2.49.0",
+    "aws-cdk-lib": "^2.40.0",
     "constructs": "^10.0.0",
     "source-map-support": "^0.5.21",
     "variable-diff": "^2.0.2"
   },
   "peerDependencies": {
     "@aws-sdk/client-schemas": "^3.202.0",
-    "source-map-support": "^0.5.21",
     "aws-cdk-lib": "^2.40.0",
-    "constructs": "^10.0.0"
+    "constructs": "^10.0.0",
+    "source-map-support": "^0.5.21"
   },
   "keywords": [
     "aws",

@@ -1,0 +1,19 @@
+{
+    "version": "0",
+    "id": "1dbfb32a-249b-06ec-93a7-63f97cbc5b98",
+    "detail-type": "Schema Created",
+    "source": "aws.schemas",
+    "account": "123456789",
+    "time": "2022-11-04T12:46:38Z",
+    "region": "us-west-2",
+    "resources": [
+        "arn:aws:schemas:us-west-2:123456789:schema/discovered-schemas/myapp.users@ThisIsANewEvent10"
+    ],
+    "detail": {
+        "SchemaName": "myapp.users@ThisIsANewEvent10",
+        "SchemaType": "OpenApi3",
+        "RegistryName": "discovered-schemas",
+        "CreationDate": "2022-11-04T12:46:28Z",
+        "Version": "1"
+    }
+}

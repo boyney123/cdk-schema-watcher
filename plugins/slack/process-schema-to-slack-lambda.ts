@@ -56,6 +56,7 @@ const buildBlocksForSchemaChanged = async (event: any) => {
   if (!oldVersionSchema || !newVersionSchema) {
     throw new Error('Cannot find old and new version of schema');
   }
+  
 
   const { text: diff } = diffString(JSON.parse(oldVersionSchema), JSON.parse(newVersionSchema), {
     color: false,
@@ -71,7 +72,7 @@ const buildBlocksForSchemaChanged = async (event: any) => {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `🚨 New schema found for event *"${detailType}"*`,
+          text: `🚨 New schema version found for event *"${detailType}"*`,
         },
       },
       {
