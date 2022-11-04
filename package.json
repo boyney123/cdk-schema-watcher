@@ -1,6 +1,6 @@
 {
-  "name": "cdk-schema-watcher-test",
-  "version": "0.1.4",
+  "name": "cdk-schema-watcher",
+  "version": "0.0.1",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "publishConfig": {
