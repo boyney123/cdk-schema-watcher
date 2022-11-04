@@ -19,6 +19,11 @@ To get started with SchemaWatcher you will need to install the construct into yo
 npm i cdk-schema-watcher
 ```
 
+## Turning on schema discovery 
+In order to use this construct you need to turn on [schema discovery for your EventBridge bus](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-schema.html).
+
+You can do this using the AWS console, navigating to your event bus and enabling schema discovery.
+
 ## Using the construct
 
 Once installed, you will need to import the construct into your project and configure the plugins you want to use.
@@ -55,37 +60,8 @@ export class CdkSchemaWatcherSandboxStack extends cdk.Stack {
 
 ```
 
-With SchemaWatcher you can listen to a variety of events from the schema registry. You can configure these inside the `SchemaWatcher` construct.
+With SchemaWatcher you can listen to a variety of events from the schema registry. You can configure these inside the `SchemaWatcher` construct. See the [guides for more information](/docs/guides/listening-for-schemas-based-on-source).
 
-### Listening to all events from a EventBridge source
 
-If you want to listen to all events for a given `source` you can configure your `SchemaWatcher` to do that. 
 
-**Example**
-
-```js
-import * as cdk from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-
-import { SchemaWatcher } from 'cdk-schema-watcher';
-import { SlackNotifier } from 'cdk-schema-watcher/plugins';
-
-export class CdkSchemaWatcherSandboxStack extends cdk.Stack {
-  constructor(scope: Construct, id: string, props?: cdk.StackProps) {
-    super(scope, id, props);
-    new SchemaWatcher(this, 'MyTeam', {
-      type: 'All',
-      sources: ['myapp.payments'],
-      plugins: [
-        new SlackNotifier({
-          API_KEY: process.env.SLACK_API_KEY,
-          CHANNEL_ID: process.env.SLACK_CHANNEL_ID,
-        }),
-      ],
-    });
-  }
-}
-```
-
-As you can see above we are interested in `all` schema changes that are going to happen inside the `myapp.payments` source. This means **any** change to these schemas (new or new versions) will get reported to the selected plugins (in this example)
 

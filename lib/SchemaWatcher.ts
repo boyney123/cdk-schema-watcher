@@ -70,7 +70,7 @@ export class SchemaWatcher extends Construct {
 
     // useful for debugging
     const logGroup = new LogGroup(this, 'SchemaWatcherLogGroup', {
-      logGroupName: `/aws/events/schema-listeners/${id}/schema-notification-logs`,
+      logGroupName: `/aws/events/schema-watcher/${id}/schema-notification-logs`,
       removalPolicy: RemovalPolicy.DESTROY,
     });
 

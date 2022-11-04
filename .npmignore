@@ -1,7 +1,14 @@
 *.ts
 !*.d.ts
 
+# Include the ts lambda function into the build
+!plugins/slack/process-schema-to-slack-lambda.ts
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out
 
+website/
+test/
+README.md
+jest.config.js

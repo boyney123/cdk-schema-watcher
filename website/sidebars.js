@@ -6,7 +6,7 @@ const sidebars = {
       type: 'category',
       label: 'Getting Started',
       collapsed: false,
-      items: ['installation', 'configuration'],
+      items: ['installation', 'configuration', 'debugging'],
     },
     {
       type: 'category',
