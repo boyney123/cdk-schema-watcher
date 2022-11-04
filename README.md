@@ -1,6 +1,6 @@
 <div align="center">
 
-<h1>📖 EventBridge SchemaWatcher</h1>
+<h1>🔍 EventBridge SchemaWatcher</h1>
 <p>EventBridge CDK construct that will notify your downstream consumers of schema changes (with plugin support).</>
 
 [![PRs Welcome][prs-badge]][prs]
