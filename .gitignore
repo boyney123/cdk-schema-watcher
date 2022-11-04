@@ -1,8 +1,23 @@
-*.js
 !jest.config.js
 *.d.ts
 node_modules
 
+/lib/*.js
+
+bin/*.js
+plugins/**/*.js
+test/*.js
+
+
 # CDK asset staging directory
 .cdk.staging
 cdk.out
+
+
+website/build
+.docusaurus
+.idea
+.DS_Store
+out
+.env
+package-lock.json
